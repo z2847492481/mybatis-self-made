@@ -1,1 +1,4 @@
 # mybatis-self-made
+SqlSession负责建立与db的连接
+
+而MapperProxyFactory生成的是Mapper对应实现的对象
