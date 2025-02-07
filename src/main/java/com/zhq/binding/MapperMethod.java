@@ -3,7 +3,9 @@ package com.zhq.binding;
 import com.zhq.config.Configuration;
 import com.zhq.mapping.MappedStatement;
 import com.zhq.mapping.SqlCommandType;
+import com.zhq.session.SqlSession;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
@@ -18,12 +20,32 @@ public class MapperMethod {
         this.command = new SqlCommand(configuration, mapperInterface, method);
     }
 
+    public Object execute(SqlSession sqlSession, Object[] args) {
+        Object result = null;
+        switch (command.getType()) {
+            case INSERT:
+                break;
+            case UPDATE:
+                break;
+            case DELETE:
+                break;
+            case SELECT:
+                result = sqlSession.selectOne(command.getName(), args);
+                break;
+            default:
+                throw new RuntimeException("Unknown execution method for: " + command.getName());
+
+        }
+        return result;
+    }
+
     /**
      * SQL 指令
      */
     public static class SqlCommand {
 
         private final String name;
+
         private final SqlCommandType type;
 
         public SqlCommand(Configuration configuration, Class<?> mapperInterface, Method method) {
