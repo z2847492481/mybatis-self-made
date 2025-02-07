@@ -1,6 +1,7 @@
 package com.zhq.session.defaults;
 
 import com.zhq.binding.MapperRegistry;
+import com.zhq.config.Configuration;
 import com.zhq.session.SqlSession;
 
 /**
@@ -12,10 +13,10 @@ public class DefaultSqlSession implements SqlSession {
     /**
      * 存储了已经加载的mapper
      */
-    private MapperRegistry mapperRegistry;
+    private Configuration configuration;
 
-    public DefaultSqlSession(MapperRegistry mapperRegistry) {
-        this.mapperRegistry = mapperRegistry;
+    public DefaultSqlSession(Configuration configuration) {
+        this.configuration = configuration;
     }
 
 
@@ -31,6 +32,11 @@ public class DefaultSqlSession implements SqlSession {
 
     @Override
     public Object getMapper(Class type) {
-        return mapperRegistry.getMapper(type, this);
+        return configuration.getMapper(type, this);
+    }
+
+    @Override
+    public Configuration getConfiguration() {
+        return configuration;
     }
 }

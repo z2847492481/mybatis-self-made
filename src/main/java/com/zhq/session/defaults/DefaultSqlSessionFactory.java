@@ -1,6 +1,7 @@
 package com.zhq.session.defaults;
 
 import com.zhq.binding.MapperRegistry;
+import com.zhq.config.Configuration;
 import com.zhq.session.SqlSession;
 import com.zhq.session.SqlSessionFactory;
 
@@ -10,14 +11,14 @@ import com.zhq.session.SqlSessionFactory;
  */
 public class DefaultSqlSessionFactory implements SqlSessionFactory {
 
-    private MapperRegistry mapperRegistry;
+    private final Configuration configuration;
 
-    public DefaultSqlSessionFactory(MapperRegistry mapperRegistry) {
-        this.mapperRegistry = mapperRegistry;
+    public DefaultSqlSessionFactory(Configuration configuration) {
+        this.configuration = configuration;
     }
 
     @Override
     public SqlSession openSession() {
-        return new DefaultSqlSession(mapperRegistry);
+        return new DefaultSqlSession(configuration);
     }
 }

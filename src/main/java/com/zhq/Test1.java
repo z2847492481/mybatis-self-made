@@ -14,8 +14,8 @@ public class Test1 {
 
 
     public static void main(String[] args) {
-        MapperRegistry mapperRegistry = new MapperRegistry();
-        mapperRegistry.addMappers("com.zhq.dao");
-        logger.info("success");
+//        MapperRegistry mapperRegistry = new MapperRegistry();
+//        mapperRegistry.addMappers("com.zhq.dao");
+//        logger.info("success");
     }
 }

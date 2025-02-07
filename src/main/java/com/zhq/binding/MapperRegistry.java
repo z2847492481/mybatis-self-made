@@ -1,6 +1,7 @@
 package com.zhq.binding;
 
 import cn.hutool.core.lang.ClassScanner;
+import com.zhq.config.Configuration;
 import com.zhq.session.SqlSession;
 
 import java.util.HashMap;
@@ -11,7 +12,13 @@ import java.util.Set;
  * @author zhq123
  * @date 2025/2/6 21:19
  */
-public class MapperRegistry {
+public class MapperRegistry<T> {
+
+    private Configuration<T> configuration;
+
+    public MapperRegistry(Configuration<T> configuration) {
+        this.configuration = configuration;
+    }
 
     /**
      * 将已添加的映射器代理加入到 HashMap

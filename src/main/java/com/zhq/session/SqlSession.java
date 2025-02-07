@@ -1,5 +1,7 @@
 package com.zhq.session;
 
+import com.zhq.config.Configuration;
+
 /**
  * @author zhq123
  * @date 2025/2/6 21:13
@@ -39,5 +41,11 @@ public interface SqlSession<T> {
     <T> T getMapper(Class<T> type);
 
 
+    /**
+     * Retrieves current configuration
+     * 得到配置
+     * @return Configuration
+     */
+    Configuration getConfiguration();
 
 }
