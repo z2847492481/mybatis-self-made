@@ -42,7 +42,7 @@ public class Configuration<T> {
         mapperRegistry.addMapper(type);
     }
 
-    public <T> T getMapper(Class<T> type, SqlSession<T> sqlSession) {
+    public <T> T getMapper(Class<T> type, SqlSession sqlSession) {
         return (T) mapperRegistry.getMapper(type, sqlSession);
     }
 

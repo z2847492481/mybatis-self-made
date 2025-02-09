@@ -6,7 +6,7 @@ import com.zhq.config.Configuration;
  * @author zhq123
  * @date 2025/2/6 21:13
  */
-public interface SqlSession<T> {
+public interface SqlSession {
 
     /**
      * Retrieve a single row mapped from the statement key
