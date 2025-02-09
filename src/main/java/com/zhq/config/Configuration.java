@@ -2,6 +2,7 @@ package com.zhq.config;
 
 import com.zhq.binding.MapperRegistry;
 import com.zhq.datasource.druid.DruidDataSourceFactory;
+import com.zhq.datasource.unpooled.UnpooledDataSourceFactory;
 import com.zhq.mapping.Environment;
 import com.zhq.mapping.MappedStatement;
 import com.zhq.session.SqlSession;
@@ -32,6 +33,8 @@ public class Configuration<T> {
         typeAliasRegistry.registerAlias("JDBC", JdbcTransactionFactory.class);
         // 配置文件中数据源的映射
         typeAliasRegistry.registerAlias("DRUID", DruidDataSourceFactory.class);
+        // 无池化连接池
+        typeAliasRegistry.registerAlias("UNPOOLED", UnpooledDataSourceFactory.class);
     }
 
     public void addMappers(String packageName) {
