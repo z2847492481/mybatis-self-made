@@ -114,7 +114,7 @@ public class XMLConfigBuilder extends BaseBuilder {
             SAXReader saxReader = new SAXReader();
             Document document = saxReader.read(new InputSource(reader));
             Element root = document.getRootElement();
-            //命名空间
+            // 命名空间 ===> 全限定名
             String namespace = root.attributeValue("namespace");
             // SELECT
             List<Element> selectNodes = root.elements("select");
