@@ -9,6 +9,10 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
+ * 每一个DB操作接口第一次执行的时候，都会生成一个MapperMethod对象
+ * MapperMethod对象对象用于判断当前操作是CRUD中的哪一类，然后调用sqlSession进行DB操作
+ *
+ *
  * @author zhq123
  * @date 2025/2/7 21:17
  */
