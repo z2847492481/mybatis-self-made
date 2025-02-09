@@ -29,6 +29,10 @@ public class JdbcTransaction implements Transaction {
         this.autoCommit = autoCommit;
     }
 
+    public JdbcTransaction(Connection connection) {
+        this.connection = connection;
+    }
+
 
     @Override
     public Connection getConnection() throws SQLException {
