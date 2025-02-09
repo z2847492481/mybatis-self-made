@@ -1,8 +1,12 @@
 package com.zhq.config;
 
 import com.zhq.binding.MapperRegistry;
+import com.zhq.datasource.druid.DruidDataSourceFactory;
+import com.zhq.mapping.Environment;
 import com.zhq.mapping.MappedStatement;
 import com.zhq.session.SqlSession;
+import com.zhq.transaction.jdbc.JdbcTransactionFactory;
+import com.zhq.type.TypeAliasRegistry;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,9 +17,22 @@ import java.util.Map;
  */
 public class Configuration<T> {
 
+    //环境
+    protected Environment environment;
+
     private final MapperRegistry mapperRegistry = new MapperRegistry(this);
 
     private final Map<String, MappedStatement> mappedStatementMap = new HashMap<>();
+
+    // 类型别名注册机
+    protected final TypeAliasRegistry typeAliasRegistry = new TypeAliasRegistry();
+
+    public Configuration() {
+        // 配置文件中事务管理器的映射
+        typeAliasRegistry.registerAlias("JDBC", JdbcTransactionFactory.class);
+        // 配置文件中数据源的映射
+        typeAliasRegistry.registerAlias("DRUID", DruidDataSourceFactory.class);
+    }
 
     public void addMappers(String packageName) {
         mapperRegistry.addMappers(packageName);
@@ -41,4 +58,15 @@ public class Configuration<T> {
         return mappedStatementMap.get(id);
     }
 
+    public TypeAliasRegistry getTypeAliasRegistry() {
+        return typeAliasRegistry;
+    }
+
+    public Environment getEnvironment() {
+        return environment;
+    }
+
+    public void setEnvironment(Environment environment) {
+        this.environment = environment;
+    }
 }

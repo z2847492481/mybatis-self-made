@@ -1,6 +1,7 @@
 package com.zhq.builder;
 
 import com.zhq.config.Configuration;
+import com.zhq.type.TypeAliasRegistry;
 
 /**
  * @author zhq123
@@ -9,9 +10,11 @@ import com.zhq.config.Configuration;
 public abstract class BaseBuilder<T> {
 
     protected final Configuration<T> configuration;
+    protected final TypeAliasRegistry typeAliasRegistry;
 
     public BaseBuilder(Configuration<T> configuration) {
         this.configuration = configuration;
+        this.typeAliasRegistry = this.configuration.getTypeAliasRegistry();
     }
 
     public Configuration<T> getConfiguration() {
