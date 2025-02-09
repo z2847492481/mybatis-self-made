@@ -1,6 +1,5 @@
-package com.zhq;
+package com.zhq.test;
 
-import com.zhq.binding.MapperRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
