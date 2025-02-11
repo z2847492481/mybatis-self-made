@@ -2,6 +2,7 @@ package com.zhq.config;
 
 import com.zhq.binding.MapperRegistry;
 import com.zhq.datasource.druid.DruidDataSourceFactory;
+import com.zhq.datasource.pooled.PooledDataSourceFactory;
 import com.zhq.datasource.unpooled.UnpooledDataSourceFactory;
 import com.zhq.mapping.Environment;
 import com.zhq.mapping.MappedStatement;
@@ -35,6 +36,8 @@ public class Configuration<T> {
         typeAliasRegistry.registerAlias("DRUID", DruidDataSourceFactory.class);
         // 无池化连接池
         typeAliasRegistry.registerAlias("UNPOOLED", UnpooledDataSourceFactory.class);
+        // 无池化连接池
+        typeAliasRegistry.registerAlias("POOLED", PooledDataSourceFactory.class);
     }
 
     public void addMappers(String packageName) {
