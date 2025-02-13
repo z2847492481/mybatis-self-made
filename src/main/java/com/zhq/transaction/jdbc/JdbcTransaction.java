@@ -39,7 +39,7 @@ public class JdbcTransaction implements Transaction {
         connection = dataSource.getConnection();
         connection.setTransactionIsolation(level.getLevel());
         connection.setAutoCommit(autoCommit);
-        return null;
+        return connection;
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.zhq.datasource.druid.DruidDataSourceFactory;
 import com.zhq.datasource.pooled.PooledDataSourceFactory;
 import com.zhq.datasource.unpooled.UnpooledDataSourceFactory;
 import com.zhq.executor.Executor;
+import com.zhq.executor.SimpleExecutor;
 import com.zhq.executor.resultset.DefaultResultSetHandler;
 import com.zhq.executor.resultset.ResultSetHandler;
 import com.zhq.executor.statement.PreparedStatementHandler;
@@ -17,7 +18,7 @@ import com.zhq.session.SqlSession;
 import com.zhq.transaction.Transaction;
 import com.zhq.transaction.jdbc.JdbcTransactionFactory;
 import com.zhq.type.TypeAliasRegistry;
-import org.apache.ibatis.executor.SimpleExecutor;
+
 
 import java.util.HashMap;
 import java.util.Map;
