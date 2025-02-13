@@ -4,11 +4,20 @@ import com.zhq.binding.MapperRegistry;
 import com.zhq.datasource.druid.DruidDataSourceFactory;
 import com.zhq.datasource.pooled.PooledDataSourceFactory;
 import com.zhq.datasource.unpooled.UnpooledDataSourceFactory;
+import com.zhq.executor.Executor;
+import com.zhq.executor.resultset.DefaultResultSetHandler;
+import com.zhq.executor.resultset.ResultSetHandler;
+import com.zhq.executor.statement.PreparedStatementHandler;
+import com.zhq.executor.statement.StatementHandler;
+import com.zhq.mapping.BoundSql;
 import com.zhq.mapping.Environment;
 import com.zhq.mapping.MappedStatement;
+import com.zhq.session.ResultHandler;
 import com.zhq.session.SqlSession;
+import com.zhq.transaction.Transaction;
 import com.zhq.transaction.jdbc.JdbcTransactionFactory;
 import com.zhq.type.TypeAliasRegistry;
+import org.apache.ibatis.executor.SimpleExecutor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -74,5 +83,26 @@ public class Configuration<T> {
 
     public void setEnvironment(Environment environment) {
         this.environment = environment;
+    }
+
+    /**
+     * 创建结果集处理器
+     */
+    public ResultSetHandler newResultSetHandler(Executor executor, MappedStatement mappedStatement, BoundSql boundSql) {
+        return new DefaultResultSetHandler(executor, mappedStatement, boundSql);
+    }
+
+    /**
+     * 生产执行器
+     */
+    public Executor newExecutor(Transaction transaction) {
+        return new SimpleExecutor(this, transaction);
+    }
+
+    /**
+     * 创建语句处理器
+     */
+    public StatementHandler newStatementHandler(Executor executor, MappedStatement mappedStatement, Object parameter, ResultHandler resultHandler, BoundSql boundSql) {
+        return new PreparedStatementHandler(executor, mappedStatement, parameter, resultHandler, boundSql);
     }
 }

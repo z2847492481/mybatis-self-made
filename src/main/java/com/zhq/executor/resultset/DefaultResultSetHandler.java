@@ -1,47 +1,39 @@
-package com.zhq.session.defaults;
+package com.zhq.executor.resultset;
 
-import com.zhq.binding.MapperRegistry;
-import com.zhq.config.Configuration;
 import com.zhq.executor.Executor;
 import com.zhq.mapping.BoundSql;
-import com.zhq.mapping.Environment;
 import com.zhq.mapping.MappedStatement;
-import com.zhq.session.SqlSession;
-import com.zhq.transaction.TransactionFactory;
 
 import java.lang.reflect.Method;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * @author zhq123
- * @date 2025/2/6 21:24
+ * @date 2025/2/13 21:54
  */
-public class DefaultSqlSession implements SqlSession {
+public class DefaultResultSetHandler implements ResultSetHandler {
 
     /**
-     * 存储了已经加载的mapper
+     * 用于获取返回值类型
      */
-    private Configuration configuration;
+    private final BoundSql boundSql;
 
-    private Executor executor;
-
-    public DefaultSqlSession(Configuration configuration) {
-        this.configuration = configuration;
+    public DefaultResultSetHandler(Executor executor, MappedStatement mappedStatement, BoundSql boundSql) {
+        this.boundSql = boundSql;
     }
 
     @Override
-    public Object selectOne(String statement) {
-        return null;
-    }
-
-    @Override
-    public <T> T selectOne(String statement, Object parameter) {
-        MappedStatement ms = configuration.getMappedStatement(statement);
-        // 通过executor去执行sql并返回结果
-        List<T> list = executor.query(ms, parameter, Executor.NO_RESULT_HANDLER, ms.getBoundSql());
-        return list.get(0);
+    public <E> List<E> handleResultSets(Statement stmt) throws SQLException {
+        ResultSet resultSet = stmt.getResultSet();
+        try {
+            return resultSet2Obj(resultSet, Class.forName(boundSql.getResultType()));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private <T> List<T> resultSet2Obj(ResultSet resultSet, Class<?> clazz) {
@@ -70,15 +62,5 @@ public class DefaultSqlSession implements SqlSession {
             e.printStackTrace();
         }
         return list;
-    }
-
-    @Override
-    public Object getMapper(Class type) {
-        return configuration.getMapper(type, this);
-    }
-
-    @Override
-    public Configuration getConfiguration() {
-        return configuration;
     }
 }
