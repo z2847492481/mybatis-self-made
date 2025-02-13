@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * sqlSession -> executor
  * @author zhq123
  * @date 2025/2/6 21:24
  */
