@@ -29,6 +29,7 @@ public class SimpleExecutor extends BaseExecutor{
             Configuration configuration = ms.getConfiguration();
             StatementHandler handler = configuration.newStatementHandler(this, ms, parameter, resultHandler, boundSql);
             Connection connection = transaction.getConnection();
+            // The object used for executing a static SQL statement and returning the results it produces.
             Statement stmt = handler.prepare(connection);
             handler.parameterize(stmt);
             return handler.query(stmt, resultHandler);
