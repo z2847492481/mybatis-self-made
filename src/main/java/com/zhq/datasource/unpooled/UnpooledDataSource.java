@@ -15,11 +15,11 @@ import java.util.logging.Logger;
  */
 public class UnpooledDataSource implements DataSource {
 
-    private static Map<String, Driver> registeredDrivers = new HashMap<>();
-
     private ClassLoader driverClassLoader;
 
     private Properties driverProperties;
+
+    private static Map<String, Driver> registeredDrivers = new HashMap<>();
 
     private String driver;
 
