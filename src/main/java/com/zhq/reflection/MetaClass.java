@@ -1,9 +1,11 @@
 package com.zhq.reflection;
 
-import cn.bugstack.mybatis.reflection.invoker.GetFieldInvoker;
-import cn.bugstack.mybatis.reflection.invoker.Invoker;
-import cn.bugstack.mybatis.reflection.invoker.MethodInvoker;
-import cn.bugstack.mybatis.reflection.property.PropertyTokenizer;
+
+
+import com.zhq.reflection.invoker.GetFieldInvoker;
+import com.zhq.reflection.invoker.Invoker;
+import com.zhq.reflection.invoker.MethodInvoker;
+import com.zhq.reflection.property.PropertyTokenizer;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

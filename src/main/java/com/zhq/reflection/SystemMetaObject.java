@@ -1,9 +1,10 @@
 package com.zhq.reflection;
 
-import cn.bugstack.mybatis.reflection.factory.DefaultObjectFactory;
-import cn.bugstack.mybatis.reflection.factory.ObjectFactory;
-import cn.bugstack.mybatis.reflection.wrapper.DefaultObjectWrapperFactory;
-import cn.bugstack.mybatis.reflection.wrapper.ObjectWrapperFactory;
+
+import com.zhq.reflection.factory.DefaultObjectFactory;
+import com.zhq.reflection.factory.ObjectFactory;
+import com.zhq.reflection.wrapper.DefaultObjectWrapperFactory;
+import com.zhq.reflection.wrapper.ObjectWrapperFactory;
 
 /**
  * @author 小傅哥，微信：fustack

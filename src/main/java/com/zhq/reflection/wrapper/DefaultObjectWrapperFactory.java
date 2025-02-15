@@ -1,6 +1,7 @@
 package com.zhq.reflection.wrapper;
 
-import cn.bugstack.mybatis.reflection.MetaObject;
+
+import com.zhq.reflection.MetaObject;
 
 /**
  * @author 小傅哥，微信：fustack

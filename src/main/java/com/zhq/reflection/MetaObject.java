@@ -1,8 +1,9 @@
 package com.zhq.reflection;
 
-import cn.bugstack.mybatis.reflection.factory.ObjectFactory;
-import cn.bugstack.mybatis.reflection.property.PropertyTokenizer;
-import cn.bugstack.mybatis.reflection.wrapper.*;
+
+import com.zhq.reflection.factory.ObjectFactory;
+import com.zhq.reflection.property.PropertyTokenizer;
+import com.zhq.reflection.wrapper.*;
 
 import java.util.Collection;
 import java.util.List;
